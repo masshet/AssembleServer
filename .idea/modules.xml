@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AssembleServer.iml" filepath="$PROJECT_DIR$/.idea/modules/AssembleServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AssembleServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AssembleServer_main.iml" group="AssembleServer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AssembleServer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AssembleServer_test.iml" group="AssembleServer" />
     </modules>
   </component>
 </project>
