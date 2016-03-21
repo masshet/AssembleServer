@@ -51,22 +51,17 @@ public class Account {
         this.lastName = lastName;
     }
 
-    @JsonIgnore
     @Column(name = "username", nullable = false, length = 30)
     private String username;
 
-    @JsonIgnore
     @Column(name = "password", nullable = false, length = 30)
     private String password;
 
-    public Account(String username, String password) {
+    public void setUsername(String username) {
         this.username = username;
-        this.password = password;
     }
 
-    public Account() {
-
-    }
+    public Account() {}
 
     public Long getId() {
         return id;

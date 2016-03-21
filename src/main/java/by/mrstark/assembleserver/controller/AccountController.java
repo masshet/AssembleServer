@@ -1,6 +1,7 @@
 package by.mrstark.assembleserver.controller;
 
 import by.mrstark.assembleserver.entity.Account;
+import by.mrstark.assembleserver.entity.IsFree;
 import by.mrstark.assembleserver.service.AccountService;
 import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,31 +21,14 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public Account regAccount(@RequestBody Account account) {
+        return accountService.add(account);
+    }
+
+    @RequestMapping(value = "/free", method = RequestMethod.GET, params = "username")
     @ResponseBody
-    public Account regAccount() {
-        return accountService.add(createMockAccount());
+    public IsFree isUsernameFree(@RequestParam String username) {
+        return accountService.findByUsername(username);
     }
-
-    @RequestMapping(value = "/isfree", method = RequestMethod.GET)
-    @ResponseBody
-    public String isUsernameFree(@RequestParam(value = "username", defaultValue = "masshet") String username) {
-        boolean isFree = accountService.findByUsername(username);
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(isFree);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private Account createMockAccount() {
-        Account account = new Account("masshet", "masshet");
-        account.setFirstName("Alex");
-        account.setLastName("Masliakov");
-        account.setEmail("lmasliakov@gmial.com");
-        return account;
-    }
-
 }

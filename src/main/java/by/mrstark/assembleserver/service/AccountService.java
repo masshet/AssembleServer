@@ -1,6 +1,7 @@
 package by.mrstark.assembleserver.service;
 
 import by.mrstark.assembleserver.entity.Account;
+import by.mrstark.assembleserver.entity.IsFree;
 import by.mrstark.assembleserver.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,15 +17,18 @@ public class AccountService {
     @Autowired
     private AccountRepository repository;
 
+    public AccountService() {
+    }
+
     public Account findByUsernameAndPassword(String username, String password) {
         return repository.findByUsernameAndPassword(username, password);
     }
 
-    public boolean findByUsername(String username) {
+    public IsFree findByUsername(String username) {
         if (repository.findByUsername(username) != null) {
-            return false;
+            return new IsFree(false);
         }
-        return true;
+        return new IsFree(true);
     }
 
     public Account add(Account account) {
