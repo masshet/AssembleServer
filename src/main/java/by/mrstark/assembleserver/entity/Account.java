@@ -24,6 +24,17 @@ public class Account {
     @Column(name = "last_name", nullable = false, length = 30)
     private String lastName;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Column(name = "email")
+    private String email;
+
     public String getFirstName() {
         return firstName;
     }
@@ -41,7 +52,7 @@ public class Account {
     }
 
     @JsonIgnore
-    @Column(name = "username", nullable = false, length = 30, unique = true)
+    @Column(name = "username", nullable = false, length = 30)
     private String username;
 
     @JsonIgnore

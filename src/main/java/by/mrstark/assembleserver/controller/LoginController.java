@@ -3,12 +3,7 @@ package by.mrstark.assembleserver.controller;
 import by.mrstark.assembleserver.entity.Account;
 import by.mrstark.assembleserver.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by mrstark on 17.3.16.
@@ -22,8 +17,9 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Account getAccess() {
-        return accountService.findByUsernameAndPassword("masshet", "masshet");
+    public Account getAccess(@RequestParam(value = "username", defaultValue = "masshet") String username,
+                             @RequestParam(value = "password", defaultValue = "masshet") String password) {
+        return accountService.findByUsernameAndPassword(username, password);
     }
 
 }

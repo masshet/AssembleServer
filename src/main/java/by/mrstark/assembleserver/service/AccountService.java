@@ -20,6 +20,13 @@ public class AccountService {
         return repository.findByUsernameAndPassword(username, password);
     }
 
+    public boolean findByUsername(String username) {
+        if (repository.findByUsername(username) != null) {
+            return false;
+        }
+        return true;
+    }
+
     public Account add(Account account) {
         return repository.saveAndFlush(account);
     }
